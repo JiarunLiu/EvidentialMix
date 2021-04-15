@@ -372,8 +372,10 @@ def plotHistogram(data, predictions=None, log=False, model_name='', phase='', ti
     if predictions is not None:
         plt.subplot(121)
     plt.hist(data[clean], bins=300, alpha=0.5, color='green')
-    plt.hist(data[closed_noise], bins=300, alpha=0.5, color='blue')
-    plt.hist(data[open_noise], bins=300, alpha=0.5, color='red')
+    if len(closed_noise) > 0:
+        plt.hist(data[closed_noise], bins=300, alpha=0.5, color='blue')
+    if len(open_noise) > 0:
+        plt.hist(data[open_noise], bins=300, alpha=0.5, color='red')
     # plt.legend(loc='upper right')
     if predictions is not None:
         plt.subplot(122)
